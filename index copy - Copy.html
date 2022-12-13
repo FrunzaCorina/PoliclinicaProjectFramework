@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PacientManagement</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>	
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="pacientcontroller.js"></script>
+	<script type="text/javascript" src="pacientservice.js"></script>
+	<script type="text/javascript" src="pacientdirective.js"></script>
+</head>
+<body ng-app = "pacientApp">
+	<div class="container">
+		<h2 align="center"><b>Hospital management</b></h2>
+		<div ng-controller = "PacientController as sc">
+			<h2 align="center"><b>Cautare pacienti</b></h2>
+			<div pacient-search></div>
+			<h2 align="center"><b>Detalii pacienti</b></h2>
+			<div pacient-display></div>
+		</div>
+	</div>
+</body>
+</html>

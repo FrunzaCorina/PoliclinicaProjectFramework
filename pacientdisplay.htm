@@ -1,0 +1,70 @@
+<div class="row" align="center">
+	<button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#add">
+        <span class="glyphicon glyphicon-plus"></span>Adaugare pacient
+    </button>
+    <div add-pacient></div>
+</div>
+<div align="center" class="row">
+	<div class="col-sm-12">
+		<table class="table table-stripted table-bordered">
+			<thead>
+				<!-- <th ng-click = "sc.orderBy('id')" ng-dblclick = "sc.orderBy('-id')"><strong>Id</strong></th> -->
+				<th ng-click = "sc.orderBy('name')" 	ng-dblclick = "sc.orderBy('-name')">	<strong>Nume</strong></th>
+				<th ng-click = "sc.orderBy('address')" 	ng-dblclick = "sc.orderBy('-address')">	<strong>Adresa</strong></th>
+				<th ng-click = "sc.orderBy('mobile')" 	ng-dblclick = "sc.orderBy('-mobile')">	<strong>Telefon</strong></th>
+				<th ng-click = "sc.orderBy('medic')" 	ng-dblclick = "sc.orderBy('-medic')">	<strong>Medic</strong></th>
+				<th><strong>Action</strong></th>
+			</thead>
+			<tr ng-repeat = "s in sc.pacients | orderBy : sc.ordering | filter : {id : sc.id, name : sc.name, address : sc.address, medic : sc.medic, mobile : sc.mobile}">
+					<!-- <td>{{s.id}}</td> -->
+					<td>
+						<div ng-hide = "sc.editorEnabled[$index]">
+							{{s.name}}
+						</div>
+						<div ng-show = "sc.editorEnabled[$index]">
+							<input type="text" value="{{s.name}}" ng-model = "s.name"/>
+						</div>
+					</td>
+					<td>
+						<div ng-hide = "sc.editorEnabled[$index]">
+							{{s.address}}
+						</div>
+						<div ng-show = "sc.editorEnabled[$index]">
+							<input type="text" value="{{s.address}}" ng-model = "s.address"/>
+						</div>
+					</td>
+					<td>
+						<div ng-hide = "sc.editorEnabled[$index]">
+							{{s.mobile}}
+						</div>
+						<div ng-show = "sc.editorEnabled[$index]">
+							<input type="text" value="{{s.mobile}}" ng-model = "s.mobile"/>
+						</div>
+					</td>
+					<td>
+						<div ng-hide = "sc.editorEnabled[$index]">
+							{{s.medic}}
+						</div>
+						<div ng-show = "sc.editorEnabled[$index]">
+							<select class="form-control" id="medic" ng-model = "s.medic" ng-selected = "s.medic">
+								<option>Elena Topala</option>
+								<option>Viorica Lupu</option>
+								<option>Ana Rusu</option>
+				  			</select>
+						</div>
+					</td>
+					<td>
+						<div ng-hide = "sc.editorEnabled[$index]">
+							<button class="btn btn-info" ng-click = "sc.enableEditor($index)">Editeaza</button>
+							<button class="btn btn-danger" ng-click = "sc.deletePacient(s.id)">Sterge</button>
+						</div>
+						<div ng-show = "sc.editorEnabled[$index]">
+							<button class="btn btn-success" ng-click = "sc.editPacient($index, s.id, s.name, s.address, s.medic, s.mobile) ">Save</button>
+							<button class="btn btn-danger" ng-click = "sc.disableEditor($index)">Anulare</button>
+						</div>	
+					</td>
+				</div>
+			</tr>
+		</table>
+	</div>
+</div>
